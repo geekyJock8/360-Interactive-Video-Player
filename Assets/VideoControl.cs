@@ -10,6 +10,9 @@ public class VideoControl : MonoBehaviour
     public GameObject player;
     public GameObject asianMagic;
     public GameObject europeanMagic;
+    public GameObject playButton;
+    public GameObject pauseButton;
+    public GameObject ambientSound;
     private UnityEngine.Video.VideoPlayer videoPlayer;
 
     private bool videoPaused;
@@ -41,11 +44,17 @@ public class VideoControl : MonoBehaviour
         {
             videoPaused = false;
             videoPlayer.Play();
+            playButton.SetActive(false);
+            pauseButton.SetActive(true);
+            ambientSound.GetComponent<AudioSource>().volume = 0.275f;
         }
         else
         {
             videoPaused = true;
             videoPlayer.Pause();
+            playButton.SetActive(true);
+            pauseButton.SetActive(false);
+            ambientSound.GetComponent<AudioSource>().volume = 0;
         }
     }
 
@@ -68,7 +77,7 @@ public class VideoControl : MonoBehaviour
         option = 2;
         print(option);
         canvas.SetActive(false);
-        videoPlayer.url = "https://www.dropbox.com/s/mrljd91dlscve4y/europe_injected.mp4?dl=1";
+        videoPlayer.url = "https://www.dropbox.com/s/9cbxejh0mjw8qpc/europe.mp4?dl=1";
         videoPlayer.Play();
     }
 
